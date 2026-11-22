@@ -87,6 +87,89 @@ export const lessons = [
     source: 'NICE: CBT for binge-eating disorder', url: 'https://www.nice.org.uk/guidance/ng69/chapter/Recommendations'
   },
   {
+    "id": "reducing-sugar",
+    "title": "Cutting down or stopping completely?",
+    "summary": "Compare gradual reduction with a direct change, and choose what to review.",
+    "minutes": 5,
+    "idea": "Choose a specific change you can sustain. A clear rule and a gradual approach are options to review, not tests of willpower.",
+    "paragraphs": [
+      "Cutting down can mean reducing an amount or frequency in stages. “Cold turkey” usually means stopping a chosen food or drink all at once. Start by naming the routine you want to change, such as sugar added to tea, rather than making a vague rule about all sugar.",
+      "“Refined sugar” describes processing. For nutrition guidance, the more useful category is free sugars: sugars added to food or drinks, plus those in honey, syrups, juices and smoothies. Swapping table sugar for honey still supplies free sugars.",
+      "Sugars naturally present in whole fruit and plain milk are not free sugars. Reducing free sugars does not require removing those foods or all carbohydrates. The “of which sugars” figure on UK labels includes total sugars; it does not separately measure free sugars."
+    ],
+    "comparison": [
+      {
+        "title": "Reduce gradually",
+        "paragraphs": [
+          "Try smaller amounts of sugar in tea in stages, or replace one usual sugary drink at a time. The NHS suggests gradual reductions for sugar added to hot drinks.",
+          "Smaller steps may feel more acceptable, while repeated decisions may be inconvenient. Choose a feasible pace; there is no required taper timetable in this lab."
+        ]
+      },
+      {
+        "title": "Make a direct change",
+        "paragraphs": [
+          "Try replacing a particular usual sugary drink with water, or choosing unsweetened tea from a chosen day. This changes one routine without requiring a ban on all sweet foods.",
+          "A simple rule may be easier to remember, while the adjustment may feel abrupt. Having the original drink on another occasion is information for your review, not a verdict about your character."
+        ]
+      }
+    ],
+    "review": {
+      "title": "Review the approach, not your willpower",
+      "steps": [
+        "Choose one food or drink routine, the change you want and a replacement you actually find acceptable.",
+        "Write down the plan and a feasible review point, such as after a few days. That is a practical choice, not a research-established optimum.",
+        "Notice whether you can follow the plan, how satisfying it feels, and what happens to cravings, hunger or guilt. Keep eating enough; skipping meals to compensate is a different pattern from choosing a drink swap.",
+        "Keep, adjust or stop the plan. An unplanned choice does not create a failed streak or a need to start again. If eating feels increasingly distressing or hard to control, use Support rather than making the rules stricter."
+      ]
+    },
+    "example": "Ari wants less added sugar in evening tea. They consider reducing it in stages or switching to unsweetened tea. Either plan keeps their usual meals and gives them a concrete change to review.",
+    "question": "How could Ari choose between these approaches?",
+    "answers": [
+      {
+        "text": "Choose a feasible approach and review satisfaction, cravings and how manageable it feels.",
+        "feedback": "A specific plan gives Ari something to try and review. Either a gradual reduction or a direct change might fit; a few personal observations cannot establish a universal winner."
+      },
+      {
+        "text": "Remove whole fruit and milk too, because their labels show sugar.",
+        "feedback": "Total sugars and free sugars are different categories. Naturally occurring sugars in whole fruit and plain milk do not need to be removed to make this change."
+      },
+      {
+        "text": "Assume stopping completely must work better because its rule sounds clearer.",
+        "feedback": "A clear rule may be useful, but that does not establish that it will suit Ari or work better for everyone. Consider feasibility and experience, as well as how the rule sounds."
+      }
+    ],
+    "correct": 0,
+    "activity": "In Experiments, choose Design my own experiment. Under What small change will you try?, name the routine, your gradual or direct approach, an alternative and a review point. Under What would you like to notice?, include manageability, satisfaction and any change in cravings or guilt. If you already have an active experiment, edit or review it before starting another.",
+    "action": "Plan a small change",
+    "href": "#experiments",
+    "research": {
+      "paragraphs": [
+        "NHS public-health guidance recommends reducing free sugars and describes both gradual reductions and direct swaps. These practical suggestions do not establish one approach as the best for every person.",
+        "A 2024 paper reported two six-month randomized trials of gradual versus immediate reductions in soft-drink sweetness. Both approaches helped maintain liking for less-sweet drinks in the US full-sugar-drink cohort; findings differed in other cohorts. The trials did not compare quitting all sugar or establish a winner for long-term health outcomes.",
+        "The trials were funded by PepsiCo, and several authors were company employees. Consider that commercial involvement alongside the limited outcomes and populations studied.",
+        "NICE advice against weight-loss dieting during binge-eating disorder treatment applies to that clinical setting. It does not establish that every voluntary reduction in a sugary drink causes binge eating. If you receive individual dietary or eating-disorder care, keep changes consistent with that plan."
+      ],
+      "sources": [
+        {
+          "title": "NHS: Sugar—the facts (definitions and food labels)",
+          "url": "https://www.nhs.uk/live-well/eat-well/food-types/how-does-sugar-in-our-diet-affect-our-health/"
+        },
+        {
+          "title": "NHS: How to cut down on sugar (gradual changes and swaps)",
+          "url": "https://www.nhs.uk/live-well/eat-well/how-to-eat-a-balanced-diet/how-to-cut-down-on-sugar-in-your-diet/"
+        },
+        {
+          "title": "Mah et al. (2024): Change in liking following reduction in sweetness level of carbonated beverages",
+          "url": "https://doi.org/10.1038/s41598-024-77529-w"
+        },
+        {
+          "title": "NICE NG69: Binge-eating disorder treatment, recommendation 1.4.7",
+          "url": "https://www.nice.org.uk/guidance/ng69/chapter/Recommendations#treating-binge-eating-disorder"
+        }
+      ]
+    }
+  },
+  {
     id: 'thoughts-and-choice', title: 'A thought is not an instruction',
     summary: 'Practise noticing a craving thought and choosing how to respond.',
     idea: 'You can notice a thought without having to fight it or automatically obey it.',

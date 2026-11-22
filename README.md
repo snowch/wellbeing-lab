@@ -6,7 +6,7 @@ Eight practical labs for personally chosen changes, with short lessons, case fee
 
 | Lab | Address | Main application |
 | --- | --- | --- |
-| Cravings | `cravings/` | Six lessons, check-ins, four practices and optional experiments |
+| Cravings | `cravings/` | Seven lessons, check-ins, four practices and optional experiments |
 | Starting and Returning | `starting-and-returning/` | Curiosity question, prepared first action, visible result, restart note |
 | Focus and Attention | `focus/` | A feasible focus window and returning after interruptions |
 | Learning and Practice | `learning/` | Retrieval, feedback and distributed practice |
@@ -27,7 +27,7 @@ Starting and Returning includes a working unsigned 32-bit addition model, the `0
 
 Entries remain in page memory by default: reloading, navigating away from a lab or closing the tab clears them. Optional device saving, JSON export and scoped deletion are available within each lab. There are no accounts, analytics or application backend. No external fonts, scripts or embeds are required.
 
-Cravings retains its original **`cravings-lab-v1`** localStorage key and data model. Renaming the repository and moving the page does not change the `snowch.github.io` origin, so existing accessible saved entries remain available. Its six lessons, support links, practices and experiment history are preserved. Other labs use **`wellbeing-lab-{slug}-v1`** keys; deleting one lab leaves others untouched. The hub does not read entries.
+Cravings retains its original **`cravings-lab-v1`** localStorage key and data model. Renaming the repository and moving the page does not change the `snowch.github.io` origin, so existing accessible saved entries remain available. Its original six lessons, support links, practices and experiment history are preserved. Other labs use **`wellbeing-lab-{slug}-v1`** keys; deleting one lab leaves others untouched. The hub does not read entries.
 
 Device storage is browser-specific, not encrypted or isolated from other applications on the same origin. Avoid device saving in a shared browser profile. Browser clearing/private mode may erase entries. Export files contain the entries; this version does not import them. Storage failures leave current data in memory and retain export/deletion controls without falsely claiming to save.
 
@@ -68,3 +68,7 @@ Pushes to `main` run tests then deploy `dist/` through `.github/workflows/pages.
 - `catalogue.json`: hub and directory descriptions.
 - `starting-and-returning/checklist.html`: generated printable session card.
 - `tests/`: desktop and mobile browser and accessibility checks.
+
+## Sugar-reduction lesson
+
+`cravings/#lesson/reducing-sugar` compares gradual reduction with changing one food or drink routine directly. It distinguishes free/added sugars from naturally occurring sugars in whole fruit and milk, offers two practical examples and a four-step review, and links to the existing custom-experiment form. Collapsed research notes distinguish NHS advice, limited beverage-liking trial outcomes (including commercial funding) and the specific scope of NICE binge-eating treatment guidance. It does not promise a detox, a universal winner or a reset of sweet preference.
