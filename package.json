@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "playwright test",
-    "check": "node --check cravings/app.js && node --check cravings/model.js && node --check cravings/lessons.js && node --check shared/lab.js && node --check shared/model.js && node scripts/build.mjs",
+    "check": "node --check cravings/app.js && node --check cravings/model.js && node --check cravings/lessons.js && node --check cravings/sugar-plan.js && node --check shared/lab.js && node --check shared/model.js && node scripts/build.mjs",
     "serve": "python3 -m http.server 4173"
   },
   "devDependencies": {

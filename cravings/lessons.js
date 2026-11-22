@@ -88,66 +88,77 @@ export const lessons = [
   },
   {
     "id": "reducing-sugar",
-    "title": "Cutting down or stopping completely?",
-    "summary": "Compare gradual reduction with a direct change, and choose what to review.",
-    "minutes": 5,
-    "idea": "Choose a specific change you can sustain. A clear rule and a gradual approach are options to review, not tests of willpower.",
+    "title": "Cutting down, swapping or cold turkey?",
+    "summary": "Compare what each approach changes, where it may fit and what can make it difficult.",
+    "minutes": 4,
+    "idea": "Amount, replacement and timing are different choices. You can combine them without making a rule about every food.",
     "paragraphs": [
-      "Cutting down can mean reducing an amount or frequency in stages. “Cold turkey” usually means stopping a chosen food or drink all at once. Start by naming the routine you want to change, such as sugar added to tea, rather than making a vague rule about all sugar.",
+      "There are three useful questions: how much or how often will I have the item; what could take its place; and will I stop it from a particular point? Cutting down, swapping and cold turkey address different parts of the plan. They are not three fixed personality types.",
       "“Refined sugar” describes processing. For nutrition guidance, the more useful category is free sugars: sugars added to food or drinks, plus those in honey, syrups, juices and smoothies. Swapping table sugar for honey still supplies free sugars.",
       "Sugars naturally present in whole fruit and plain milk are not free sugars. Reducing free sugars does not require removing those foods or all carbohydrates. The “of which sugars” figure on UK labels includes total sugars; it does not separately measure free sugars."
     ],
     "comparison": [
       {
-        "title": "Reduce gradually",
+        "title": "Cutting down",
         "paragraphs": [
-          "Try smaller amounts of sugar in tea in stages, or replace one usual sugary drink at a time. The NHS suggests gradual reductions for sugar added to hot drinks.",
-          "Smaller steps may feel more acceptable, while repeated decisions may be inconvenient. Choose a feasible pace; there is no required taper timetable in this lab."
+          "What changes: the amount or frequency of the same item. For example, use a little less sugar in tea and stay at that step until your review, or choose fewer of your usual sugary-drink occasions.",
+          "May fit when: keeping some of the item matters, smaller changes feel acceptable, and deciding on an amount is manageable.",
+          "Trade-off: measuring or renegotiating amounts can become a burden. A vague promise to “have less” is hard to follow; choose one concrete step and a review point rather than an endless taper."
         ]
       },
       {
-        "title": "Make a direct change",
+        "title": "Swapping",
         "paragraphs": [
-          "Try replacing a particular usual sugary drink with water, or choosing unsweetened tea from a chosen day. This changes one routine without requiring a ban on all sweet foods.",
-          "A simple rule may be easier to remember, while the adjustment may feel abrupt. Having the original drink on another occasion is information for your review, not a verdict about your character."
+          "What changes: something else takes the place of the target. For example, replace the usual regular cola at lunch with a chilled drink you actually like that contains less free sugar.",
+          "May fit when: the drink, snack, break or convenience is important, and an affordable, satisfying alternative is available.",
+          "Trade-off: a substitute that is unpleasant or hard to obtain may not last. Check that it serves the intended goal: replacing sugar with honey does not remove free sugar, and adding water without replacing the usual drink is a different change."
+        ]
+      },
+      {
+        "title": "Cold turkey for a specific item",
+        "paragraphs": [
+          "What changes: stop the named item or added ingredient from a chosen point rather than reducing it in stages. For example, stop adding sugar to evening tea from Monday.",
+          "May fit when: one clear boundary seems easier than repeatedly deciding an amount, you want to try it, and you have a workable way to meet the underlying need.",
+          "Trade-off: an all-or-nothing rule can increase preoccupation or guilt for some people. Name the item and setting carefully; this is not a requirement to cut out fruit, milk, all carbohydrates or all enjoyment. A later unplanned choice is a reason to review, not to compensate or restart a streak."
         ]
       }
     ],
     "review": {
-      "title": "Review the approach, not your willpower",
+      "title": "The approaches can overlap",
       "steps": [
-        "Choose one food or drink routine, the change you want and a replacement you actually find acceptable.",
-        "Write down the plan and a feasible review point, such as after a few days. That is a practical choice, not a research-established optimum.",
-        "Notice whether you can follow the plan, how satisfying it feels, and what happens to cravings, hunger or guilt. Keep eating enough; skipping meals to compensate is a different pattern from choosing a drink swap.",
-        "Keep, adjust or stop the plan. An unplanned choice does not create a failed streak or a need to start again. If eating feels increasingly distressing or hard to control, use Support rather than making the rules stricter."
+        "You can swap one usual drink at a time, combining substitution with gradual change.",
+        "You can stop buying one particular drink immediately and use an alternative, combining a direct stop with a swap.",
+        "The useful question is what arrangement serves your goal and is workable in your life. The next page helps you choose a first trial."
       ]
     },
-    "example": "Ari wants less added sugar in evening tea. They consider reducing it in stages or switching to unsweetened tea. Either plan keeps their usual meals and gives them a concrete change to review.",
-    "question": "How could Ari choose between these approaches?",
+    "example": "Ari wants less added sugar in evening tea. They could use a smaller amount, choose another drink, or stop adding sugar from a chosen day. Unsweetened tea could be both a swap and a direct stop of the added sugar.",
+    "question": "Ari stops their usual sugary lunch drink immediately and replaces it with water. How would you describe the plan?",
     "answers": [
       {
-        "text": "Choose a feasible approach and review satisfaction, cravings and how manageable it feels.",
-        "feedback": "A specific plan gives Ari something to try and review. Either a gradual reduction or a direct change might fit; a few personal observations cannot establish a universal winner."
+        "text": "It combines a swap with stopping the chosen drink directly.",
+        "feedback": "Swapping describes the replacement; a direct stop describes the timing. These can be part of the same plan."
       },
       {
-        "text": "Remove whole fruit and milk too, because their labels show sugar.",
-        "feedback": "Total sugars and free sugars are different categories. Naturally occurring sugars in whole fruit and plain milk do not need to be removed to make this change."
+        "text": "It must be classified as only one approach.",
+        "feedback": "The approaches are not mutually exclusive. A plan can specify the replacement and whether the change happens immediately or in stages."
       },
       {
-        "text": "Assume stopping completely must work better because its rule sounds clearer.",
-        "feedback": "A clear rule may be useful, but that does not establish that it will suit Ari or work better for everyone. Consider feasibility and experience, as well as how the rule sounds."
+        "text": "It proves cold turkey is the best approach for Ari in every situation.",
+        "feedback": "Describing a plan does not show how well it will work. Ari still needs to notice feasibility, satisfaction and whether it serves the intended goal."
       }
     ],
     "correct": 0,
-    "activity": "In Experiments, choose Design my own experiment. Under What small change will you try?, name the routine, your gradual or direct approach, an alternative and a review point. Under What would you like to notice?, include manageability, satisfaction and any change in cravings or guilt. If you already have an active experiment, edit or review it before starting another.",
-    "action": "Plan a small change",
-    "href": "#experiments",
+    "activity": "Next, work through the decision guide. Choose a first approach using your goal, past experience and practical constraints; you can change your mind after a trial.",
+    "action": "Use the decision guide",
+    "href": "#lesson/choosing-a-sugar-approach",
     "research": {
       "paragraphs": [
         "NHS public-health guidance recommends reducing free sugars and describes both gradual reductions and direct swaps. These practical suggestions do not establish one approach as the best for every person.",
+        "A Cochrane review found moderate-certainty evidence that making low-calorie drinks more available at home was associated with lower sugary-drink intake. That supports considering access and preparation; it does not show that any particular swap will suit every person.",
         "A 2024 paper reported two six-month randomized trials of gradual versus immediate reductions in soft-drink sweetness. Both approaches helped maintain liking for less-sweet drinks in the US full-sugar-drink cohort; findings differed in other cohorts. The trials did not compare quitting all sugar or establish a winner for long-term health outcomes.",
         "The trials were funded by PepsiCo, and several authors were company employees. Consider that commercial involvement alongside the limited outcomes and populations studied.",
-        "NICE advice against weight-loss dieting during binge-eating disorder treatment applies to that clinical setting. It does not establish that every voluntary reduction in a sugary drink causes binge eating. If you receive individual dietary or eating-disorder care, keep changes consistent with that plan."
+        "NICE advice against weight-loss dieting during binge-eating disorder treatment applies to that clinical setting. It does not establish that every voluntary reduction in a sugary drink causes binge eating. If you receive individual dietary or eating-disorder care, keep changes consistent with that plan.",
+        "The fit questions and examples in these pages are practical planning aids. They are not a validated test that assigns people to a diet or predicts which approach will work."
       ],
       "sources": [
         {
@@ -165,6 +176,150 @@ export const lessons = [
         {
           "title": "NICE NG69: Binge-eating disorder treatment, recommendation 1.4.7",
           "url": "https://www.nice.org.uk/guidance/ng69/chapter/Recommendations#treating-binge-eating-disorder"
+        },
+        {
+          "title": "Cochrane: Environmental interventions to reduce sugary-drink consumption",
+          "url": "https://www.cochrane.org/evidence/CD012292_cutting-back-sugar-sweetened-beverages-what-works"
+        }
+      ]
+    },
+    "sugar": true
+  },
+  {
+    "id": "choosing-a-sugar-approach",
+    "title": "Which approach fits my situation?",
+    "summary": "Use your goal, past experience and practical constraints to choose a first trial.",
+    "minutes": 4,
+    "sugar": true,
+    "sugarChoices": true,
+    "idea": "Choose a feasible first trial using your goal, past experience and current conditions. Review it before committing longer term.",
+    "paragraphs": [
+      "Start with the goal: a less-sweet drink, less automatic snacking, fewer repeated decisions, or something else you value. An approach is useful only if it serves that goal without creating costs you do not want.",
+      "Then consider four things: what the routine gives you; which decisions are difficult; what happened with similar changes before; and what is affordable and available now. Wanting a particular approach is relevant, but enthusiasm alone does not supply time, food or an acceptable alternative.",
+      "If missed meals or hunger are the main issue, start by meeting that need rather than tightening a sugar rule. If strict rules have brought distress, preoccupation or feeling unable to stop eating, a stricter boundary may be a poor first experiment; the existing Support page can help you find appropriate advice."
+    ],
+    "guidance": [
+      {
+        "title": "Use your constraints to narrow the choice",
+        "items": [
+          "If keeping some of the same item matters and a chosen amount feels manageable, consider cutting down.",
+          "If the routine or convenience matters more than the exact item, and an acceptable alternative is accessible, consider a swap.",
+          "If repeated amount decisions are the main burden and a chosen, specific boundary feels workable, consider stopping that one item directly.",
+          "If none fits the conditions this week, change the setup or wait for a feasible opportunity. You do not have to force a choice."
+        ]
+      },
+      {
+        "title": "How will I know whether it helps?",
+        "items": [
+          "Choose one routine and one approach or explicit combination. State what you want to happen at that routine.",
+          "At a few comparable, feasible opportunities, notice what you actually tried and whether the intended change happened. Include satisfaction, effort, hunger/cravings and any increased guilt. Use the optional notes in Check in, or a short note elsewhere, if recording helps.",
+          "At your chosen review point, keep what is workable, adapt one part or try another approach. If it increases distress or food preoccupation, review sooner rather than making the rule stricter.",
+          "If you try a second approach later, keep the routine similar and note what else changed. You do not owe the lab repeated trials, and a short comparison is not proof of causation."
+        ]
+      }
+    ],
+    "example": "Jo dislikes measuring smaller amounts but likes an affordable alternative that is already available at lunch. A swap is a reasonable first trial. If the alternative turns out unsatisfying, Jo can adapt it or try a chosen amount of the original item.",
+    "question": "Jo found that a swap was difficult because the alternative was unavailable at work. What is a useful response?",
+    "answers": [
+      {
+        "text": "Review access or choose another feasible approach; this does not show a lack of willpower.",
+        "feedback": "Availability was a practical condition of the plan. Jo can arrange an alternative or change the approach, then review the next feasible opportunities."
+      },
+      {
+        "text": "Conclude that all swaps are ineffective.",
+        "feedback": "This attempt tells us something about access in this setting, not whether every substitution works."
+      },
+      {
+        "text": "Impose a stricter ban to make up for it.",
+        "feedback": "A stricter rule does not supply the missing alternative. Change the arrangement rather than treating an unavailable option as a personal failure."
+      }
+    ],
+    "correct": 0,
+    "activity": "Choose a starting example on this page to open an editable draft, or start with your own details on the next page. The examples are starting points, not prescriptions.",
+    "action": "Build my own plan",
+    "href": "#lesson/putting-a-sugar-plan-into-practice",
+    "research": {
+      "paragraphs": [
+        "The decision prompts and editable plans organise a personally chosen trial. They do not diagnose a problem or establish which strategy will work best. Research on drink availability informs the design, but does not validate this particular guide. A meta-analysis of implementation intentions examined specific situation–action plans across 642 tests; it does not establish that these sugar plans will work for you.",
+        "A short personal trial can help you judge feasibility and usefulness. Task differences, expectations, sleep, workload and changing circumstances remain alternative explanations for what you observe."
+      ],
+      "sources": [
+        {
+          "title": "NHS: How to cut down on sugar (gradual changes and swaps)",
+          "url": "https://www.nhs.uk/live-well/eat-well/how-to-eat-a-balanced-diet/how-to-cut-down-on-sugar-in-your-diet/"
+        },
+        {
+          "title": "Cochrane: Environmental interventions to reduce sugary-drink consumption",
+          "url": "https://www.cochrane.org/evidence/CD012292_cutting-back-sugar-sweetened-beverages-what-works"
+        },
+        {
+          "title": "Sheeran et al.: The when and how of planning—meta-analysis of implementation intentions",
+          "url": "https://doi.org/10.1080/10463283.2024.2334563"
+        }
+      ]
+    }
+  },
+  {
+    "id": "putting-a-sugar-plan-into-practice",
+    "title": "Turn the choice into a workable plan",
+    "summary": "Prepare the cue, action, alternative, fallback and review, then make the draft your own.",
+    "minutes": 5,
+    "sugar": true,
+    "sugarPlanner": true,
+    "idea": "Prepare the action before the cue arrives, and decide how to resume when the day differs from your plan.",
+    "paragraphs": [
+      "Choose one routine and write what will change there. For cutting down, specify the first smaller amount or fewer occasions and hold that step until review. For swapping, name the replacement and make it available. For cold turkey, name exactly what stops, when it starts and what will meet the need instead.",
+      "Prepare the setting: what needs to be bought, chilled, placed within reach or discussed with someone? Link a recognisable cue to a concrete action. Write a fallback for an unavailable alternative or an unplanned choice, rather than relying on perfect days.",
+      "The editable examples below show those decisions. Adjust the item, amount and timing to your own circumstances. During the trial, Check in → Mood, eating and notes can hold a brief record of what you tried and how it felt; a hunger or urge score is optional. The suggested five opportunities are a practical review point, not a scientifically optimal schedule. Your draft becomes part of your lab record only when you start the experiment."
+    ],
+    "guidance": [
+      {
+        "title": "At review: keep, adapt or stop",
+        "items": [
+          "Ask whether the intended change actually happened in the named routine and whether it was satisfying and manageable.",
+          "If it helped but preparation was difficult, simplify the setup. If the substitute was disappointing, change it. If amount decisions were burdensome, reconsider the boundary rather than assuming stricter is always better.",
+          "If hunger, guilt, preoccupation or distress increased, pause and reconsider the plan; use Support if wanted. A missed opportunity does not create debt or require skipping food.",
+          "Keep a useful approach, change one part, try another at a later feasible point, or stop. Record what else changed before attributing the result to the approach."
+        ]
+      }
+    ],
+    "example": "Rae chooses a lower-sugar tea step, leaves the spoon beside the tea, and plans to review after five feasible evenings. After an unexpectedly busy evening, Rae uses the next opportunity without skipping dinner or restarting a countdown.",
+    "question": "Rae reaches the review point. The change is manageable, but the drink is unsatisfying. What could Rae do?",
+    "answers": [
+      {
+        "text": "Adapt the amount or drink, or try another approach, while keeping the goal and costs in view.",
+        "feedback": "Manageability is only one part of fit. Satisfaction matters too; the review is a chance to improve or stop the arrangement."
+      },
+      {
+        "text": "Continue indefinitely because finishing the trial commits Rae forever.",
+        "feedback": "A trial is not a permanent obligation. The review point exists so Rae can choose what to keep, change or stop."
+      },
+      {
+        "text": "Treat an unplanned evening as a reason to skip the next meal.",
+        "feedback": "Compensating by skipping food is not a restart plan. Rae can meet hunger and choose the next feasible opportunity."
+      }
+    ],
+    "correct": 0,
+    "activity": "Use Review draft in Experiments to check and edit the generated plan before starting it. If you already have an active experiment, review or finish it first; this draft does not replace it.",
+    "action": "Open Experiments",
+    "href": "#experiments",
+    "research": {
+      "paragraphs": [
+        "The decision prompts and editable plans organise a personally chosen trial. They do not diagnose a problem or establish which strategy will work best. Research on drink availability informs the design, but does not validate this particular guide. A meta-analysis of implementation intentions examined specific situation–action plans across 642 tests; it does not establish that these sugar plans will work for you.",
+        "A short personal trial can help you judge feasibility and usefulness. Task differences, expectations, sleep, workload and changing circumstances remain alternative explanations for what you observe."
+      ],
+      "sources": [
+        {
+          "title": "NHS: How to cut down on sugar (gradual changes and swaps)",
+          "url": "https://www.nhs.uk/live-well/eat-well/how-to-eat-a-balanced-diet/how-to-cut-down-on-sugar-in-your-diet/"
+        },
+        {
+          "title": "Cochrane: Environmental interventions to reduce sugary-drink consumption",
+          "url": "https://www.cochrane.org/evidence/CD012292_cutting-back-sugar-sweetened-beverages-what-works"
+        },
+        {
+          "title": "Sheeran et al.: The when and how of planning—meta-analysis of implementation intentions",
+          "url": "https://doi.org/10.1080/10463283.2024.2334563"
         }
       ]
     }
