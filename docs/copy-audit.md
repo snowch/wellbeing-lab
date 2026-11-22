@@ -46,3 +46,16 @@ The opening pass used the source for the conditional branches and a published Ch
 - `npm run check` verifies the JavaScript syntax. `npm test` passed 22 desktop and mobile Chromium scenarios, including axe checks and the seeded version-1 retry and removal case. The app uses one theme and has no theme control.
 - The closing manual Chromium walk checks the 18 routes at both viewport widths. It follows all six lesson links, chooses all 18 answers with the keyboard, starts and stops the optional timer with visible focus, completes and discards each practice, records a zero rating, and starts and stops an edited plan. The support and evidence order remains available in the reading sequence.
 - Browser coverage uses Chromium and test data. The functional checks establish observable navigation, rendering and storage behavior. Learning effectiveness and clinical outcomes remain unmeasured.
+
+## Sugar-reduction addition — 22 November 2026
+
+The seventh lesson, `reducing-sugar`, addresses a specific gap: readers can distinguish gradual reductions from a direct change, identify free sugars rather than banning all carbohydrates, and choose a bounded plan with a review condition. Its case asks readers to compare feasible approaches rather than identify a universally superior strategy. Two comparison panels stack on a phone; research remains collapsed until requested. The activity uses the existing custom-experiment flow and preserves an active plan.
+
+Source boundaries:
+
+- [NHS Sugar: the facts](https://www.nhs.uk/live-well/eat-well/food-types/how-does-sugar-in-our-diet-affect-our-health/): free-sugar definitions, whole fruit/plain milk and total-sugar labels. The lesson does not turn a reduction goal into a requirement to remove all sugars.
+- [NHS How to cut down on sugar](https://www.nhs.uk/live-well/eat-well/how-to-eat-a-balanced-diet/how-to-cut-down-on-sugar-in-your-diet/): examples of gradual hot-drink reductions and direct swaps. Guidance examples are not a head-to-head ranking of strategies.
+- [Mah et al. (2024)](https://doi.org/10.1038/s41598-024-77529-w): gradual/direct reduced-sweetness beverages over six months, with different cohort results. Liking in a beverage study does not establish abstinence, a universal strategy or long-term health effects. The evidence note discloses PepsiCo funding and employee authorship.
+- [NICE NG69, 1.4.7](https://www.nice.org.uk/guidance/ng69/chapter/Recommendations#treating-binge-eating-disorder): weight-loss dieting advice during binge-eating disorder treatment. This is not generalized into a claim that every voluntary sugary-drink reduction causes binge eating.
+
+No detox, guaranteed preference reset, abstinence streak, dietary prescription or new storage model is introduced. Review includes feasibility, satisfaction, hunger/cravings and guilt; an unplanned choice does not trigger stricter compensation rules. Individual treatment plans remain relevant where the reader already receives care.

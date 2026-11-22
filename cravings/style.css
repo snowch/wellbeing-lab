@@ -30,3 +30,8 @@
 }
 
 .collection-breadcrumb{max-width:1280px;margin:20px auto 0;padding:0 5%;display:flex;justify-content:flex-start;gap:10px;font-size:14px}.collection-breadcrumb a{padding:6px 0}
+
+/* The sugar decision has two readable comparison panels and an optional evidence note. */
+.lesson-decision .card p,.lesson-decision .note p{font-size:16px;line-height:1.75}
+.lesson-review{padding-left:1.4rem;margin-bottom:0}.lesson-review li{padding-left:.25rem;margin-bottom:1rem;font-size:16px;line-height:1.75}.lesson-review li:last-child{margin-bottom:0}
+.lesson-evidence .source-list{margin-top:24px;margin-bottom:0}
