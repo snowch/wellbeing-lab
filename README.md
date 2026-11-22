@@ -6,7 +6,7 @@ Eight practical labs for personally chosen changes, with short lessons, case fee
 
 | Lab | Address | Main application |
 | --- | --- | --- |
-| Cravings | `cravings/` | Seven lessons, check-ins, four practices and optional experiments |
+| Cravings | `cravings/` | Nine lessons, check-ins, four practices and optional experiments |
 | Starting and Returning | `starting-and-returning/` | Curiosity question, prepared first action, visible result, restart note |
 | Focus and Attention | `focus/` | A feasible focus window and returning after interruptions |
 | Learning and Practice | `learning/` | Retrieval, feedback and distributed practice |
@@ -69,6 +69,10 @@ Pushes to `main` run tests then deploy `dist/` through `.github/workflows/pages.
 - `starting-and-returning/checklist.html`: generated printable session card.
 - `tests/`: desktop and mobile browser and accessibility checks.
 
-## Sugar-reduction lesson
+## Sugar choice and implementation
 
-`cravings/#lesson/reducing-sugar` compares gradual reduction with changing one food or drink routine directly. It distinguishes free/added sugars from naturally occurring sugars in whole fruit and milk, offers two practical examples and a four-step review, and links to the existing custom-experiment form. Collapsed research notes distinguish NHS advice, limited beverage-liking trial outcomes (including commercial funding) and the specific scope of NICE binge-eating treatment guidance. It does not promise a detox, a universal winner or a reset of sweet preference.
+Three linked Cravings pages compare [cutting down, swapping and cold turkey](https://snowch.github.io/wellbeing-lab/cravings/#lesson/reducing-sugar), [choose a first approach](https://snowch.github.io/wellbeing-lab/cravings/#lesson/choosing-a-sugar-approach), then [prepare an editable plan](https://snowch.github.io/wellbeing-lab/cravings/#lesson/putting-a-sugar-plan-into-practice). The approaches can overlap; they do not assign a personality type or diagnose dietary suitability.
+
+The decision guide addresses the routine’s purpose, past experience, amount decisions, satisfaction and practical access. Editable examples for each approach cover the target, action, cue, preparation, alternative, fallback and review. Drafts remain in memory and join the existing version-1 experiment record only after review and explicit starting. An active experiment cannot be overwritten. No new storage schema or automatic saving is introduced.
+
+Collapsed notes distinguish NHS guidance, limited beverage-liking trial outcomes (including commercial funding), Cochrane evidence on the home drink environment and the specific scope of NICE binge-eating treatment advice. A personal trial does not establish a universal winner.

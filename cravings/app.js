@@ -1,3 +1,4 @@
+import {sugarApproaches,sugarExamples,sugarFields,emptySugarDraft,makeSugarExperiment} from './sugar-plan.js';
 import { lessons } from './lessons.js';
 import { STORAGE_KEY, emptyState, readState, summarize, escapeHTML as esc } from './model.js';
 
@@ -11,6 +12,8 @@ let toastTimeout;
 let timer;
 let toolStep = 0;
 let selectedExperiment = '';
+let sugarDraft=emptySugarDraft();
+let customExperimentDraft=null;
 const main = document.querySelector('main');
 const dateFormat = new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
 const date = value => { const d = new Date(value); return Number.isNaN(d.getTime()) ? 'Unknown date' : dateFormat.format(d); };
@@ -157,8 +160,8 @@ function experimentsPage() {
     <form id="experiment-review"><div class="field"><label for="experiment-result">What did you notice?</label><textarea id="experiment-result" name="result" maxlength="1500" required placeholder="What helped, and what else differed?"></textarea></div><div class="actions"><button class="primary" type="submit">Save review and finish</button><button class="secondary" type="button" data-action="stop-experiment">Stop without a review</button></div></form></section><aside class="note green sidebar"><h3>When to stop</h3><p>Stop if the change makes eating harder or more stressful. You can respond to hunger and <a href="#support">ask for support</a> whenever you need to.</p></aside></div>` : `<p>Select an experiment to open its suggested plan. Choose <strong>Design my own experiment</strong> for a blank plan.</p><div class="grid two">${Object.entries(experimentOptions).map(([id,e]) => `<button class="experiment-option ${selectedExperiment===id?'selected':''}" data-action="choose-experiment" data-id="${id}" aria-pressed="${selectedExperiment===id}"><strong>${e.name}</strong><span>${e.description}</span></button>`).join('')}</div><div id="experiment-editor">${selectedExperiment ? experimentEditor() : ''}</div>`}${completed.length ? `<div class="section-heading"><h2>Past experiments</h2></div><div class="stack">${completed.slice().reverse().map(e => `<article class="card"><span class="badge">${e.status === 'completed' ? 'REVIEWED' : 'STOPPED'}</span><h3>${esc(e.name)}</h3><p class="review-text">${esc(e.result || 'Stopped without a review. You can try a different approach whenever you like.')}</p></article>`).join('')}</div>` : ''}`;
 }
 function experimentEditor() {
-  const e = experimentOptions[selectedExperiment];
-  return `<form id="experiment-form" class="card inline-form"><h2>Set your plan</h2><p class="muted">Check the fields before you select <strong>Start this experiment</strong>. Review after a few days, or sooner if the change feels unhelpful.</p>${selectedExperiment==='custom' ? '<div class="field"><label for="exp-name">Experiment name</label><input id="exp-name" name="name" maxlength="120" required></div>' : ''}${experimentFields(e)}<div class="actions"><button class="primary" type="submit">Start this experiment →</button><button type="button" class="secondary" data-action="cancel-experiment">Cancel</button></div></form>`;
+  const e = selectedExperiment==='custom'&&customExperimentDraft ? customExperimentDraft : experimentOptions[selectedExperiment];
+  return `<form id="experiment-form" class="card inline-form"><h2>Set your plan</h2><p class="muted">Check the fields before you select <strong>Start this experiment</strong>. Review after a few days, or sooner if the change feels unhelpful.</p>${selectedExperiment==='custom' ? `<div class="field"><label for="exp-name">Experiment name</label><input id="exp-name" name="name" maxlength="120" required value="${esc(customExperimentDraft?.name||'')}"></div>` : ''}${experimentFields(e)}<div class="actions"><button class="primary" type="submit">Start this experiment →</button><button type="button" class="secondary" data-action="cancel-experiment">Cancel</button></div></form>`;
 }
 function experimentFields({plan, notice}) {
   return `<div class="field"><label for="exp-plan">What small change will you try?</label><textarea id="exp-plan" name="plan" maxlength="1000" required>${esc(plan)}</textarea></div>
@@ -174,15 +177,44 @@ function reflectPage() {
   ${state.reviews.length ? `<div class="section-heading"><h2>Your reflections</h2></div><div class="card">${state.reviews.slice().reverse().map(r=>`<article class="entry"><div class="entry-head"><h3>${date(r.created)}${r.kind==='practice' ? ' · '+esc(tools[r.tool]?.title || 'Practice') : ''}</h3><button class="delete-entry" data-action="delete-review" data-id="${esc(r.id)}">Delete</button></div><p class="review-text">${r.kind==='practice' ? 'Felt helpful: '+esc(r.helpful) : esc(r.note)}</p></article>`).join('')}</div>` : ''}`;
 }
 function learnPage() {
-  return `${head('Learn about cravings', `${lessons.length} short lessons for adults. Read in order or start with a question that matters to you.`)}<div class="note green" style="margin-bottom:24px">Each lesson has an optional question about its example. Compare <a href="#lesson/reducing-sugar">cutting down with stopping completely</a>, or explore another question. You can go straight to <a href="#tools">practice</a> or <a href="#support">support</a> at any time.</div><div class="grid two">${lessons.map((lesson,i)=>`<article class="card tool-card"><p class="small muted">Lesson ${i+1} · About ${lesson.minutes || 3} minutes</p><h2>${lesson.title}</h2><p>${lesson.summary}</p><div class="actions">${btn('Read lesson →','#lesson/'+lesson.id,'secondary')}</div></article>`).join('')}</div><div class="note" style="margin-top:24px"><strong>If eating feels out of control or distressing</strong><p><a href="#support">Find professional support</a> whenever you need it.</p></div>`;
+  return `${head('Learn about cravings', `${lessons.length} short lessons for adults. Read in order or start with a question that matters to you.`)}<div class="note green" style="margin-bottom:24px">Each lesson has an optional question about its example. Compare <a href="#lesson/reducing-sugar">cutting down, swapping and cold turkey</a>, or explore another question. You can go straight to <a href="#tools">practice</a> or <a href="#support">support</a> at any time.</div><div class="grid two">${lessons.map((lesson,i)=>`<article class="card tool-card"><p class="small muted">Lesson ${i+1} · About ${lesson.minutes || 3} minutes</p><h2>${lesson.title}</h2><p>${lesson.summary}</p><div class="actions">${btn('Read lesson →','#lesson/'+lesson.id,'secondary')}</div></article>`).join('')}</div><div class="note" style="margin-top:24px"><strong>If eating feels out of control or distressing</strong><p><a href="#support">Find professional support</a> whenever you need it.</p></div>`;
+}
+
+function sugarPlanner() {
+  const d=sugarDraft,active=state.experiments.some(x=>x.status==='active');
+  const field=(name,label,max,placeholder,required=true)=>`<div class="field"><label for="sugar-${name}">${label}</label><textarea id="sugar-${name}" name="${name}" maxlength="${max}" ${required?'required':''} placeholder="${esc(placeholder)}">${esc(d[name])}</textarea></div>`;
+  return `<section class="card lesson-section sugar-planner"><h2>Build an editable plan</h2><p>Start from your own details or load an example. Loading an example replaces the fields in this draft. Edit the food, amount, schedule and wording before using it.</p><div class="actions sugar-example-actions">${Object.entries(sugarApproaches).map(([id,a])=>`<button type="button" class="secondary" data-action="sugar-example" data-strategy="${id}">Load ${a.label.toLowerCase()} example</button>`).join('')}</div>
+    <form id="sugar-plan-form">
+      <fieldset><legend>1. Name the change</legend><div class="field"><label for="sugar-approach">Your first approach</label><select id="sugar-approach" name="approach" required><option value="">Choose an approach</option>${Object.entries(sugarApproaches).map(([id,a])=>`<option value="${id}" ${d.approach===id?'selected':''}>${a.label}</option>`).join('')}</select><p>Changing this label keeps your draft. Edit the action or load an example; you can describe a combination.</p></div>
+      ${field('goal','What matters to you?',120,'A drink I enjoy with less added sugar',false)}
+      ${field('target','Which specific item or routine?',100,'Sugar I add to evening tea')}
+      ${field('change','What exactly will you try?',160,'A first smaller amount, a named swap, or a specific item to stop')}
+      </fieldset><fieldset><legend>2. Prepare the first action</legend>
+      ${field('cue','When will you use the plan?',100,'When I make my evening tea at home')}
+      ${field('setup','What needs preparing or making available?',120,'Leave the chosen option ready before the usual cue')}
+      ${field('alternative','What will meet the need instead?',120,'Keep the break, choose an acceptable drink and respond to hunger with food')}
+      </fieldset><fieldset><legend>3. Plan for a different day</legend>
+      ${field('fallback','If the option is unavailable or the plan is not followed, what next?',160,'Choose a practical fallback and return at the next opportunity without compensation')}
+      </fieldset><fieldset><legend>4. Decide how to review</legend>
+      ${field('review','When will you review or stop sooner?',100,'After a few feasible opportunities, or sooner if the plan increases distress')}
+      ${field('notice','What will tell you whether it helps?',240,'Did the intended change happen? Satisfaction, effort, hunger/cravings and guilt')}
+      </fieldset>
+      <p class="small">This draft stays in this tab and is not included in device saving or export. It joins your lab record only when you start the experiment in Experiments.</p>
+      ${active?'<p class="note">You already have an active experiment. This draft will not replace it. <a href="#experiments">Review or finish your current experiment</a>, then return here.</p>':''}
+      <p id="sugar-plan-error" role="status"></p><button class="primary" ${active?'disabled':''}>Review draft in Experiments</button>
+    </form></section>`;
+}
+function sugarChoices() {
+  return `<section class="card lesson-section"><h2>Choose a starting example</h2><p>Choose based on the need and constraints you identified. These examples open editable drafts; they do not start an experiment or assign you to a type.</p><div class="sugar-choice-list">${Object.entries(sugarApproaches).map(([id,a])=>`<div><h3>${a.label}</h3><p>${a.hint}</p><button class="secondary" data-action="sugar-example" data-strategy="${id}">Prepare a ${id==='stop'?'cold-turkey':id==='swap'?'swapping':'cutting-down'} plan</button></div>`).join('')}</div></section>`;
 }
 
 function lessonPage(id) {
   const index=lessons.findIndex(l=>l.id===id);
   if(index<0) return learnPage();
   const lesson=lessons[index];
-  return `<div class="exercise lesson${lesson.comparison ? ' lesson-decision' : ''}">
+  return `<div class="exercise lesson${lesson.sugar ? ' lesson-decision' : ''}">
     <a class="text-link" href="#learn">← All lessons</a>
+    ${lesson.sugar?`<div class="sugar-path" role="navigation" aria-label="Sugar change pages">${[['reducing-sugar','Compare options'],['choosing-a-sugar-approach','Choose an approach'],['putting-a-sugar-plan-into-practice','Build a plan']].map(([slug,label])=>`<a href="#lesson/${slug}" ${id===slug?'aria-current="page"':''}>${label}</a>`).join('')}</div>`:''}
     <p class="exercise-progress">Lesson ${index+1} of ${lessons.length} · About ${lesson.minutes || 3} minutes</p>
     <h1>${lesson.title}</h1>
     <div class="note green"><p>${lesson.idea}</p></div>
@@ -191,8 +223,11 @@ function lessonPage(id) {
       <div class="note"><strong>Example</strong><p>${lesson.example}</p></div>
       ${lesson.research ? '' : `<p class="small lesson-references">Read more: <a href="${lesson.url}" target="_blank" rel="noopener noreferrer">${lesson.source}</a>. See <a href="#support">evidence limits & support</a>.</p>`}
     </div>
-    ${lesson.comparison ? `<section class="lesson-section" aria-label="Two approaches"><div class="grid two">${lesson.comparison.map(approach=>`<article class="card"><h2>${approach.title}</h2>${approach.paragraphs.map(p=>`<p>${p}</p>`).join('')}</article>`).join('')}</div></section>` : ''}
+    ${lesson.comparison ? `<section class="lesson-section" aria-label="Three approaches"><div class="sugar-comparison">${lesson.comparison.map(approach=>`<article class="card"><h2>${approach.title}</h2>${approach.paragraphs.map(p=>`<p>${p}</p>`).join('')}</article>`).join('')}</div></section>` : ''}
     ${lesson.review ? `<section class="card lesson-section"><h2>${lesson.review.title}</h2><ol class="lesson-review">${lesson.review.steps.map(step=>`<li>${step}</li>`).join('')}</ol></section>` : ''}
+    ${lesson.guidance?lesson.guidance.map(section=>`<section class="card lesson-section"><h2>${section.title}</h2><ul class="lesson-review">${section.items.map(item=>`<li>${item}</li>`).join('')}</ul></section>`).join(''):''}
+    ${lesson.sugarChoices?sugarChoices():''}
+    ${lesson.sugarPlanner?sugarPlanner():''}
     ${lesson.research ? `<details class="card lesson-section lesson-evidence"><summary>Research and guidance</summary>${lesson.research.paragraphs.map(p=>`<p>${p}</p>`).join('')}<ul class="source-list">${lesson.research.sources.map(source=>`<li><a href="${source.url}" target="_blank" rel="noopener noreferrer">${source.title}</a></li>`).join('')}</ul></details>` : ''}
     <details class="card lesson-section lesson-check">
       <summary>Try the example question</summary>
@@ -213,7 +248,7 @@ function lessonPage(id) {
   </div>`;
 }
 function supportPage() {
- return `<div class="page-head"><h1>Support and evidence</h1><p>Find professional help and read the research behind the lessons.</p></div><div class="split support-layout"><aside class="stack sidebar"><section class="card support"><h2>When to speak to someone</h2><p>Speak to your general practitioner (GP) or an eating-disorder service if eating often feels out of control, causes distress or affects daily life. You can also ask for help if you’re eating less than you need or often try to make up for eating.</p><p>You can ask for support at any weight and however often this happens.</p><p><a href="https://www.beateatingdisorders.org.uk/get-information-and-support/" target="_blank" rel="noopener noreferrer">Beat: UK eating-disorder support →</a></p><p><a href="https://www.nhs.uk/mental-health/conditions/eating-disorders/overview/" target="_blank" rel="noopener noreferrer">NHS: getting help for an eating disorder →</a></p></section><div class="note peach"><h3>If you feel physically unwell</h3><p>Seek medical advice if you’re fainting, dehydrated, vomiting repeatedly or getting unwell quickly. In England, contact NHS 111 for urgent advice. In the UK, call 999 or go to A&E for an emergency or if you cannot keep yourself safe. Elsewhere, use local urgent or emergency services.</p></div><div class="note green"><h3>If you already receive care</h3><p>If you have diabetes, take medication that affects your appetite, or are receiving eating-disorder care, discuss significant changes in eating with your clinician. Speak to your prescriber about medication changes.</p></div></aside><div class="stack"><article class="card"><h2>Craving, habit and loss of control</h2><p>You might want chocolate strongly, eat automatically while watching TV, or feel unable to stop. These experiences can happen together. What helps depends on how eating feels to you.</p><p>The Diagnostic and Statistical Manual of Mental Disorders (DSM-5-TR) lists binge-eating disorder and bulimia nervosa. Its diagnoses do not include “sugar addiction” or “chocolate addiction”. A health professional can help if eating feels distressing or hard to control.</p><p>Use Cravings Lab for education and self-reflection. A health professional can assess and treat eating difficulties.</p></article><article class="card"><h2>What the evidence supports</h2><details open><summary>Professional care for binge-eating disorder</summary><p>Eating-disorder-focused cognitive behavioural therapy (CBT) and guided self-help are recommended treatments. The National Institute for Health and Care Excellence (NICE) advises regular meals and snacks and avoiding weight-loss dieting during binge-eating disorder treatment because restriction can trigger binge eating. Cravings Lab offers general information for adults. It has not been clinically tested as a treatment.</p></details><details><summary>What check-ins can show</summary><p>Recording hunger, urges and situations can show what happened together in the moments you chose to record. It cannot establish what caused an urge. You can stop at any time, especially if tracking increases distress.</p></details><details><summary>Research on brief craving exercises</summary><p>Exercises such as noticing a thought can help some people choose how to respond. Short laboratory studies have found small, mixed effects. We know less about how much these exercises help over time in everyday life.</p></details><details><summary>Gradual reduction or a direct change?</summary><p>Both are options for changing a specific food or drink routine. The <a href="#lesson/reducing-sugar">sugar-reduction lesson</a> explains free sugars, practical trade-offs and what the research can tell us.</p></details><details><summary>Research on “sugar addiction”</summary><p>Research in people provides little evidence that sugar itself causes addiction in the same way as drugs. Learned habits, familiar situations, eating less than you need and the pleasure of food may help explain some patterns. Distress about eating deserves attention whatever its cause.</p></details><details><summary>What home technology cannot tell you</summary><p>A glucose monitor measures glucose levels. A watch can record information such as sleep. To understand whether someone felt a craving or was unable to stop eating, ask how the experience felt to them.</p></details></article><article class="card"><h2>Sources & scope</h2><p>The lessons draw on the <em>Sugar and Chocolate “Addiction”</em> research synthesis (14 November 2026) and the guidance and reviews below.</p><ul class="source-list"><li><a href="https://www.nice.org.uk/guidance/ng69/chapter/Recommendations" target="_blank" rel="noopener noreferrer">NICE NG69: eating disorders—recognition and treatment</a><br>Assessment, guided self-help, CBT and regular eating.</li><li><a href="https://www.nhs.uk/mental-health/conditions/binge-eating/treatment/" target="_blank" rel="noopener noreferrer">NHS: treatment for binge-eating disorder</a><br>What professional treatment can involve.</li><li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5174153/" target="_blank" rel="noopener noreferrer">Westwater et al. (2016): Sugar addiction—the state of the science</a><br>Critical review of the sugar-addiction hypothesis.</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/31944559/" target="_blank" rel="noopener noreferrer">Review of laboratory-based food-craving interventions</a><br>Short-term findings should not be treated as proof of lasting benefit.</li></ul><p class="small">This research informs the lessons. The lab focuses on noticing experiences and choosing what may help.</p></article></div></div>`;
+ return `<div class="page-head"><h1>Support and evidence</h1><p>Find professional help and read the research behind the lessons.</p></div><div class="split support-layout"><aside class="stack sidebar"><section class="card support"><h2>When to speak to someone</h2><p>Speak to your general practitioner (GP) or an eating-disorder service if eating often feels out of control, causes distress or affects daily life. You can also ask for help if you’re eating less than you need or often try to make up for eating.</p><p>You can ask for support at any weight and however often this happens.</p><p><a href="https://www.beateatingdisorders.org.uk/get-information-and-support/" target="_blank" rel="noopener noreferrer">Beat: UK eating-disorder support →</a></p><p><a href="https://www.nhs.uk/mental-health/conditions/eating-disorders/overview/" target="_blank" rel="noopener noreferrer">NHS: getting help for an eating disorder →</a></p></section><div class="note peach"><h3>If you feel physically unwell</h3><p>Seek medical advice if you’re fainting, dehydrated, vomiting repeatedly or getting unwell quickly. In England, contact NHS 111 for urgent advice. In the UK, call 999 or go to A&E for an emergency or if you cannot keep yourself safe. Elsewhere, use local urgent or emergency services.</p></div><div class="note green"><h3>If you already receive care</h3><p>If you have diabetes, take medication that affects your appetite, or are receiving eating-disorder care, discuss significant changes in eating with your clinician. Speak to your prescriber about medication changes.</p></div></aside><div class="stack"><article class="card"><h2>Craving, habit and loss of control</h2><p>You might want chocolate strongly, eat automatically while watching TV, or feel unable to stop. These experiences can happen together. What helps depends on how eating feels to you.</p><p>The Diagnostic and Statistical Manual of Mental Disorders (DSM-5-TR) lists binge-eating disorder and bulimia nervosa. Its diagnoses do not include “sugar addiction” or “chocolate addiction”. A health professional can help if eating feels distressing or hard to control.</p><p>Use Cravings Lab for education and self-reflection. A health professional can assess and treat eating difficulties.</p></article><article class="card"><h2>What the evidence supports</h2><details open><summary>Professional care for binge-eating disorder</summary><p>Eating-disorder-focused cognitive behavioural therapy (CBT) and guided self-help are recommended treatments. The National Institute for Health and Care Excellence (NICE) advises regular meals and snacks and avoiding weight-loss dieting during binge-eating disorder treatment because restriction can trigger binge eating. Cravings Lab offers general information for adults. It has not been clinically tested as a treatment.</p></details><details><summary>What check-ins can show</summary><p>Recording hunger, urges and situations can show what happened together in the moments you chose to record. It cannot establish what caused an urge. You can stop at any time, especially if tracking increases distress.</p></details><details><summary>Research on brief craving exercises</summary><p>Exercises such as noticing a thought can help some people choose how to respond. Short laboratory studies have found small, mixed effects. We know less about how much these exercises help over time in everyday life.</p></details><details><summary>Cutting down, swapping or cold turkey?</summary><p>The <a href="#lesson/reducing-sugar">sugar-reduction lesson</a> compares the options. Use the <a href="#lesson/choosing-a-sugar-approach">decision guide</a> to choose a first trial, then prepare an <a href="#lesson/putting-a-sugar-plan-into-practice">editable plan</a>.</p></details><details><summary>Research on “sugar addiction”</summary><p>Research in people provides little evidence that sugar itself causes addiction in the same way as drugs. Learned habits, familiar situations, eating less than you need and the pleasure of food may help explain some patterns. Distress about eating deserves attention whatever its cause.</p></details><details><summary>What home technology cannot tell you</summary><p>A glucose monitor measures glucose levels. A watch can record information such as sleep. To understand whether someone felt a craving or was unable to stop eating, ask how the experience felt to them.</p></details></article><article class="card"><h2>Sources & scope</h2><p>The lessons draw on the <em>Sugar and Chocolate “Addiction”</em> research synthesis (14 November 2026) and the guidance and reviews below.</p><ul class="source-list"><li><a href="https://www.nice.org.uk/guidance/ng69/chapter/Recommendations" target="_blank" rel="noopener noreferrer">NICE NG69: eating disorders—recognition and treatment</a><br>Assessment, guided self-help, CBT and regular eating.</li><li><a href="https://www.nhs.uk/mental-health/conditions/binge-eating/treatment/" target="_blank" rel="noopener noreferrer">NHS: treatment for binge-eating disorder</a><br>What professional treatment can involve.</li><li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5174153/" target="_blank" rel="noopener noreferrer">Westwater et al. (2016): Sugar addiction—the state of the science</a><br>Critical review of the sugar-addiction hypothesis.</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/31944559/" target="_blank" rel="noopener noreferrer">Review of laboratory-based food-craving interventions</a><br>Short-term findings should not be treated as proof of lasting benefit.</li></ul><p class="small">This research informs the lessons. The lab focuses on noticing experiences and choosing what may help.</p></article></div></div>`;
 }
 function privacyPage() {
   return `${head('Your data', 'Choose what this browser keeps and download or delete your entries.')}
@@ -252,6 +287,20 @@ document.querySelector('.skip').addEventListener('click', e=>{
   e.preventDefault();
   main.focus();
   main.scrollIntoView();
+});
+function keepSugarDraft(e) {
+  if(e.target.closest('#sugar-plan-form')&&sugarFields.includes(e.target.name))sugarDraft[e.target.name]=e.target.value;
+  if(customExperimentDraft&&e.target.closest('#experiment-form')&&['name','plan','notice'].includes(e.target.name))customExperimentDraft[e.target.name]=e.target.value;
+}
+document.addEventListener('input',keepSugarDraft);
+document.addEventListener('change',keepSugarDraft);
+document.addEventListener('submit',e=>{
+  if(e.target.id!=='sugar-plan-form')return;
+  e.preventDefault();
+  if(state.experiments.some(x=>x.status==='active')){document.querySelector('#sugar-plan-error').textContent='Review or finish the current experiment before starting another.';return;}
+  sugarDraft=Object.fromEntries(new FormData(e.target));
+  try {customExperimentDraft=makeSugarExperiment(sugarDraft);selectedExperiment='custom';location.hash='#experiments';}
+  catch(error){document.querySelector('#sugar-plan-error').textContent=error.message;}
 });
 document.addEventListener('submit',e=>{
   const form=e.target;
@@ -293,6 +342,7 @@ document.addEventListener('submit',e=>{
     state.experiments.push({id:uid(),created:new Date().toISOString(),name:data.name?.trim()||experimentOptions[selectedExperiment].name,plan:data.plan.trim(),notice:data.notice.trim(),status:'active'});
     const saved = save();
     selectedExperiment='';
+    customExperimentDraft=null;
     render({focus:true});
     announceChange('Experiment started. You can review it on this page.', saved);
   }
@@ -349,6 +399,13 @@ document.addEventListener('click',async e=>{
   if (sameLink && sameLink.hash === location.hash && !e.ctrlKey && !e.metaKey && !e.shiftKey) { e.preventDefault(); clearAnnouncement(); toolStep=0; render({focus:true}); return; }
   const target=e.target.closest('[data-action]'); if(!target) return;
   const action=target.dataset.action;
+  if(action==='sugar-example') {
+    const example=sugarExamples[target.dataset.strategy];if(!example)return;
+    sugarDraft={...example};
+    const dest='#lesson/putting-a-sugar-plan-into-practice';
+    if(location.hash===dest){render();document.querySelector('#sugar-plan-form').scrollIntoView({block:'start'});document.querySelector('#sugar-approach').focus({preventScroll:true});}
+    else location.hash=dest;
+  }
   if(action==='lesson-answer') {
     const lesson=lessons.find(l=>l.id===target.dataset.lesson);
     if(!lesson)return;
@@ -403,7 +460,7 @@ document.addEventListener('click',async e=>{
   }
   if(action==='cancel-plan-edit') closePlanEditor(target.closest('form'));
   if(action==='choose-experiment'){selectedExperiment=target.dataset.id;render();document.querySelector('#experiment-editor').scrollIntoView({block:'nearest'});document.querySelector('#exp-name, #exp-plan')?.focus({preventScroll:true});}
-  if(action==='cancel-experiment'){selectedExperiment='';render();}
+  if(action==='cancel-experiment'){selectedExperiment='';customExperimentDraft=null;render();}
   if(action==='stop-experiment'){
     const active=state.experiments.find(x=>x.status==='active');
     if(active){
@@ -435,7 +492,7 @@ document.addEventListener('click',async e=>{
 document.querySelector('#confirm-dialog').addEventListener('close',e=>{
   if(e.target.returnValue!=='delete')return;
   try{storage?.removeItem(STORAGE_KEY);}catch{announce('Unable to remove saved data. Clear this site’s data using your browser settings.');return;}
-  state=emptyState();
+  state=emptyState();sugarDraft=emptySugarDraft();customExperimentDraft=null;
   persistent=false;
   selectedExperiment='';
   storageFailed=!storage;

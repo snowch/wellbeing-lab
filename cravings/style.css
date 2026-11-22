@@ -35,3 +35,9 @@
 .lesson-decision .card p,.lesson-decision .note p{font-size:16px;line-height:1.75}
 .lesson-review{padding-left:1.4rem;margin-bottom:0}.lesson-review li{padding-left:.25rem;margin-bottom:1rem;font-size:16px;line-height:1.75}.lesson-review li:last-child{margin-bottom:0}
 .lesson-evidence .source-list{margin-top:24px;margin-bottom:0}
+
+.sugar-path{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0}.sugar-path a{padding:10px 14px;border:1px solid var(--line);border-radius:12px;font-size:14px;text-decoration:none}.sugar-path a[aria-current=page]{background:var(--soft);border-color:#91a18d;font-weight:600}
+.sugar-comparison{display:grid;gap:18px}.sugar-comparison .card{border-left:3px solid #91a18d}.sugar-comparison .card p:last-child{margin-bottom:0}
+.sugar-choice-list{display:grid;gap:22px}.sugar-choice-list>div+div{padding-top:22px;border-top:1px solid var(--line)}.sugar-choice-list h3{margin-bottom:8px}
+.sugar-example-actions{margin:24px 0}.sugar-planner fieldset{padding-top:24px;margin-top:28px;border-top:1px solid var(--line)}.sugar-planner legend{font-size:20px;font-weight:600;line-height:1.5;padding:0 0 8px}.sugar-planner textarea{font-size:16px;line-height:1.6;min-height:90px}.sugar-planner .field p{margin-top:8px}.sugar-planner button:disabled{opacity:1;background:#e4e8df;color:#58645b;cursor:default}
+#sugar-plan-error:not(:empty){padding:18px;background:var(--peach);border-radius:12px;line-height:1.7}
